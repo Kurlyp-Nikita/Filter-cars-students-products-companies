@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>COMP</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+    <h2>Компания-продукт</h2>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>FIRMA</th>
+            <th>NAME</th>
+            <th>COST</th>
+        </tr>
+        {% for one in database %}
+            <tr>
+                <td>{{ one.id }}</td>
+                <td>{{ one.firma.title}}</td>
+                <td>{{ one.name }}</td>
+                <td>{{ one.cost }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <table>
+             {{ forma }}
+        </table>
+        <input type="submit" value="POISK">
+    </form>
+
+</body>
+</html>
+
+
+
+

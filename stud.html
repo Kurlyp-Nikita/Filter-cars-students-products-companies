@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>STUDENT</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+h2 {
+    padding: 20px 0;
+    background-color: #7269b3;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+h2:hover {
+    background-color: #32CD32;
+}
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #191c19b8;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+    transition: background-color 0.3s;
+}
+
+tr:hover {
+    background-color: lightsteelblue;
+    color: white;
+}
+
+button, input[type="submit"], a {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    background-color: #c5bfd3;
+}
+
+button:hover, input[type="submit"]:hover, a:hover {
+    background-color: green;
+    color: white;
+}
+    </style>
+</head>
+<body>
+<h2>СТУДЕНТЫ / КУРСЫ</h2>
+{% if 'C' in key %}
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>ИМЯ</th>
+            <th>ГРУППА</th>
+            <th>СТИПЕНДИЯ</th>
+            <th>СРЕДНИЙ БАЛ</th>
+
+        </tr>
+        {% for one in database %}
+            <tr>
+                <td>{{ one.id }}</td>
+                <td>{{ one.name }}</td>
+                <td>{{ one.group }}</td>
+                <td>{{ one.scholarship }}</td>
+                <td>{{ one.gpa }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+{% if 'S' in key %}
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>КУРС</th>
+            <th>ЦЕНА</th>
+        </tr>
+        {% for one in database %}
+            <tr>
+                <td>{{ one.id }}</td>
+                <td>{{ one.title }}</td>
+                <td>{{ one.cost }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+<form action="" method="post">
+    {% csrf_token %}
+    <table>
+        {{ forma }}
+    </table>
+    <input type="submit" value="ПОИСК">
+</form>
+</body>
+    <a href="{% url 'home' %}">Главная страница</a>
+</html>

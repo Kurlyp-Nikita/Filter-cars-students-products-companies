@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CAR</title>
+</head>
+<body>
+    <h2>Машины</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        <table>
+            {{ forma }}
+        </table>
+
+        <input type="submit" value="Poisk">
+    </form>
+{% if database %}
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>BRAND</th>
+            <th>COST</th>
+            <th>COLOR</th>
+        </tr>
+        {% for one in database %}
+            <tr>
+                <td>{{ one.id }}</td>
+                <td>{{ one.brand }}</td>
+                <td>{{ one.cost }}</td>
+                <td>{{ one.year }}</td>
+                <td>{{ one.color }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+</body>
+</html>
+
+
+

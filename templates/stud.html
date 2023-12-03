@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style_2.css' %}">
+</head>
+<body>
+<h2>Студент-курс</h2>
+{% if 'S' in key%}
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>GROUP</th>
+            <th>SCHOLARSHIP</th>
+            <th>BALL</th>
+        </tr>
+        {% for one in database %}
+            <tr>
+                <td>{{ one.id }}</td>
+                <td>{{ one.name}}</td>
+                <td>{{ one.group }}</td>
+                <td>{{ one.receives_scholarship }}</td>
+                <td>{{ one.average_score }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+
+{% if 'C' in key%}
+<table>
+        <tr>
+            <th>ID</th>
+            <th>TITLE</th>
+            <th>COST</th>
+        </tr>
+        {% for one in database %}
+            <tr>
+                <td>{{ one.id }}</td>
+                <td>{{ one.title}}</td>
+                <td>{{ one.cost }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <table>
+             {{ forma }}
+        </table>
+        <input type="submit" value="POISK">
+    </form>
+</body>
+</html>
+
+
+
+
+
+
